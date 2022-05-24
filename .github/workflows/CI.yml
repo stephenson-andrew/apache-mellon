@@ -10,7 +10,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  PACKAGE_NAME: apache-mellon
+  IMAGE_OWNER: stephenson-andrew
+  IMAGE_NAME: apache-mellon
 
 permissions: 
   packages: write
@@ -42,7 +43,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ${{ env.REGISTRY }}/${{ env.PACKAGE_NAME }}
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.PACKAGE_NAME }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
